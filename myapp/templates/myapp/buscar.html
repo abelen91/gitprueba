@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Buscar producto</h1>
+
+<form method="get">
+    {{ form.as_p }}
+    <button type="submit">Buscar</button>
+</form>
+
+<hr>
+
+<ul>
+    {% for producto in productos %}
+        <li>{{ producto.nombre }} - ${{ producto.precio }}</li>
+    {% empty %}
+        <li>No se encontraron productos.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
