@@ -1,20 +1,32 @@
-{% extends "base.html" %}
-
+{% extends "myapp/base.html" %}
+{% block title %}Buscar Producto - Mi Tienda{% endblock %}
 {% block content %}
-<h1>Buscar producto</h1>
+  <div class="card shadow-sm mb-3">
+    <div class="card-header">Buscar producto</div>
+    <div class="card-body">
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-warning">Buscar</button>
+      </form>
+    </div>
+  </div>
 
-<form method="get">
-    {{ form.as_p }}
-    <button type="submit">Buscar</button>
-</form>
-
-<hr>
-
-<ul>
-    {% for producto in productos %}
-        <li>{{ producto.nombre }} - ${{ producto.precio }}</li>
-    {% empty %}
-        <li>No se encontraron productos.</li>
-    {% endfor %}
-</ul>
+  {% if resultados != None %}
+    <div class="bg-white p-3 rounded shadow-sm">
+      <h5 class="mb-3">Resultados</h5>
+      {% if resultados %}
+        <ul class="list-group">
+          {% for p in resultados %}
+            <li class="list-group-item d-flex justify-content-between">
+              <span>{{ p.nombre }}</span>
+              <small>Precio: ${{ p.precio }} | Stock: {{ p.stock }}</small>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p class="text-muted mb-0">Sin coincidencias.</p>
+      {% endif %}
+    </div>
+  {% endif %}
 {% endblock %}

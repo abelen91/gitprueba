@@ -1,20 +1,8 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <tittle>Mi Index</tittle>
-</head>
-<body>
-    <h1>Hola, está funcionando Django</h1>
-</body>
-</html>
-
-<!-- templates/myapp/index.html -->
-{% extends "base.html" %}
-
-{% block title %}Inicio{% endblock %}
-
+{% extends "myapp/base.html" %}
+{% block title %}Inicio - Mi Tienda{% endblock %}
 {% block content %}
-<h2>Bienvenido a la Tienda de Yo Quiero Todo</h2>
-<p>Explora nuestros productos.</p>
+  <div class="p-5 bg-white rounded shadow-sm">
+    <h1 class="mb-3">Bienvenida/o</h1>
+    <p class="mb-0">Usa el menú para cargar <strong>Productos</strong>, <strong>Clientes</strong>, registrar <strong>Ventas</strong> o <strong>Buscar</strong> productos.</p>
+  </div>
 {% endblock %}
