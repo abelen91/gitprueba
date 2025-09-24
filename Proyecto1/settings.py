@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'myapp',
+    'myapp'
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -49,6 +50,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+LOGIN_REDIRECT_URL = 'index'      # adónde ir después de iniciar sesión
+LOGOUT_REDIRECT_URL = 'index'     # adónde ir después de cerrar sesión
 
 ROOT_URLCONF = 'Proyecto1.urls'
 
