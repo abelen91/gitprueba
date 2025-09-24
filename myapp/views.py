@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from .forms import (
     ProductoForm, ClienteForm, VentaForm, BuscarProductoForm
 )
@@ -47,3 +48,11 @@ def buscar_producto(request):
         'form': form,
         'resultados': resultados
     })
+
+@login_required
+def agregar_producto(request): ...
+@login_required
+def agregar_cliente(request): ...
+@login_required
+def agregar_venta(request): ...
+# La búsqueda y el index pueden quedar públicos, o también protegerlos si querés.

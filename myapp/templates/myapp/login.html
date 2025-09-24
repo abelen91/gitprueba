@@ -1,0 +1,29 @@
+{% extends "myapp/base.html" %}
+{% block title %}Iniciar sesión{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-5">
+    <div class="card shadow-sm">
+      <div class="card-header">Iniciar sesión</div>
+      <div class="card-body">
+        {% if form.errors %}
+          <div class="alert alert-danger">Usuario o contraseña incorrectos.</div>
+        {% endif %}
+        <form method="post" action="{% url 'login' %}">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label class="form-label">Usuario</label>
+            {{ form.username|add_class:"form-control" }}
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Contraseña</label>
+            {{ form.password|add_class:"form-control" }}
+          </div>
+          <button class="btn btn-primary">Entrar</button>
+          <a class="btn btn-secondary" href="{% url 'index' %}">Cancelar</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
